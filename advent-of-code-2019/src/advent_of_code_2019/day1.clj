@@ -46,4 +46,13 @@
   (->> (mapcat fuel** input)
        (apply +)))
 
+(def solution2-4
+  (reduce (fn [acc mass]
+            (->> (iterate count-fuel mass)
+                 (next)
+                 (take-while pos?)
+                 (reduce +)
+                 (+ acc)))
+          0 input))
+
 
